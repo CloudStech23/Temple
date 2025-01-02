@@ -38,18 +38,18 @@ const Events = [
 ];
 
 // Function to render events
-function renderEvents(Events) {
+function renderEvents(events) {
     const eventListContainer = document.getElementById('event-list');
-    eventListContainer.innerHTML = '';
+    eventListContainer.innerHTML = ''; // Clear the existing list before rendering new events
 
-    Events.forEach(event => {
+    events.forEach(event => {
         const eventDate = new Date(event.date); // Convert string to Date object
         const day = eventDate.getDate(); // Get day
         const year = eventDate.getFullYear();
         const month = eventDate.toLocaleString('default', { month: 'short' }); // Get month in short form
 
+        // Create event card structure
         const eventCard = `
-        
             <div class="col-md-4 mb-3">
                 <div class="card event-card position-relative">
                     <div class="position-absolute top-0 start-0 bg-primary text-white rounded-circle d-flex justify-content-center align-items-center"
@@ -65,12 +65,13 @@ function renderEvents(Events) {
                     </div>
                     <div class="px-4">
                         <p style="margin: 0px;">${event.location}</p>
-                        <p>${day} ${month} ${year} </p>
+                        <p>${day} ${month} ${year}</p>
                     </div>
                 </div>
             </div>
-         `;
+        `;
 
+        // Append the event card to the container
         eventListContainer.innerHTML += eventCard;
     });
 }
