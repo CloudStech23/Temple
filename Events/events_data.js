@@ -38,11 +38,11 @@ const Events = [
 ];
 
 // Function to render events
-function renderEvents(events) {
+function renderEvents(Events) {
     const eventListContainer = document.getElementById('event-list');
     eventListContainer.innerHTML = '';
 
-    events.forEach(event => {
+    Events.forEach(event => {
         const eventDate = new Date(event.date); // Convert string to Date object
         const day = eventDate.getDate(); // Get day
         const year = eventDate.getFullYear();
