@@ -33,15 +33,8 @@
 
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/style.css" />
-
-    <style>
-      .project-wrap img{
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-    </style>
   </head>
+
   <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -71,10 +64,10 @@
             <li class="nav-item">
               <a href="about.html" class="nav-link">About</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a href="destination.html" class="nav-link">Destination</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a href="hotel.html" class="nav-link">Hotel</a>
             </li>
             <li class="nav-item">
@@ -89,32 +82,91 @@
     </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2"
-    style="background-image: url('https://wallpapers.com/images/hd/religious-hinduism-background-on5psa38fx9b2icj.jpg'); height: 60%; background-size: cover;  background-position: top;">
-    <!-- <div class="overlay"></div> -->
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end justify-content-center" style="height: 60vh;">
-        <div class="col-md-9 ftco-animate pb-5 text-center">
-          <p class="breadcrumbs">
-            <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
-            <span>Gallery<i class="fa fa-chevron-right"></i></span>
-          </p>
-          <h1 class="mb-0 bread">Gallery</h1>
+    <section
+      class="hero-wrap hero-wrap-2"
+      style="
+        background-image: url('https://wallpapers.com/images/hd/religious-hinduism-background-on5psa38fx9b2icj.jpg');
+        height: 60%;
+        background-size: cover;
+        background-position: top;
+      "
+    >
+      <!-- <div class="overlay"></div> -->
+      <div class="container">
+        <div
+          class="row no-gutters slider-text align-items-end justify-content-center"
+          style="height: 60vh"
+        >
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+            <p class="breadcrumbs">
+              <span class="mr-2"
+                ><a href="index.html"
+                  >Home <i class="fa fa-chevron-right"></i></a
+              ></span>
+              <span>Event List <i class="fa fa-chevron-right"></i></span>
+            </p>
+            <h1 class="mb-0 bread">Event List</h1>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-    <section class="ftco-section">
-      <div class="container">
-        <div class="filter-bar mb-2">
-            <button class="filter-btn btn btn-primary" data-filter="all">All</button>
-            <button class="filter-btn btn btn-primary" data-filter="category1">Darshan</button>
-            <button class="filter-btn btn btn-primary" data-filter="category2">Aarti & Satsang</button>
-        </div>
-        <div class="row" id="image-container">
-        </div>
     </section>
+
+    <div class="container text-center mt-5">
+      <h2 class="fw-bold">Mandir Suggestions and Reviews</h2>
+      <p class="lead">
+        We value your feedback! Please share your thoughts about your experience
+        with us.
+      </p>
+    </div>
+
+    <!-- Suggestion Form -->
+    <div class="container mt-4">
+      <form action="#" method="POST">
+        <!-- Name Input -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+
+        <!-- Email Input -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <!-- Suggestion/Review Input -->
+        <div class="mb-3">
+          <label for="review" class="form-label">Your Suggestion/Review:</label>
+          <textarea
+            class="form-control"
+            id="review"
+            name="review"
+            rows="4"
+            placeholder="Enter your suggestion or review"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mb-3">
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+        </div>
+      </form>
+    </div>
 
     <footer
       class="ftco-footer bg-bottom ftco-no-pt"
@@ -256,49 +308,14 @@
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/scrollax.min.js"></script>
+    <script src="/Temple/Events/events_data.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
-
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const images = [
-          { src: 'images/gallery1.jpg', alt: 'Image 1', category: 'category1' },
-          { src: 'images/gallery2.jpg', alt: 'Image 2', category: 'category1' },
-          { src: 'images/gallery3.jpg', alt: 'Image 3', category: 'category2' },
-          { src: 'images/gallery4.jpg', alt: 'Image 4', category: 'category2' },
-          { src: 'images/gallery5.jpg', alt: 'Image 5', category: 'category3' },
-          { src: 'images/gallery6.jpg', alt: 'Image 6', category: 'category3' },
-          { src: 'images/gallery7.jpg', alt: 'Image 7', category: 'category1' },
-          // Add more image objects with different categories if needed
-        ];
-
-        const imageContainer = document.getElementById('image-container');
-
-        images.forEach(image => {
-          const div = document.createElement('div');
-          div.className = `col-md-4 project-wrap ${image.category} show`;
-          div.innerHTML = `<img src="${image.src}" alt="${image.alt}" class="src">`;
-          imageContainer.appendChild(div);
-        });
-
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projects = document.querySelectorAll('.project-wrap');
-
-        filterButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-
-            projects.forEach(project => {
-              if (filter === 'all' || project.classList.contains(filter)) {
-                project.style.display = 'block';
-              } else {
-                project.style.display = 'none';
-              }
-            });
-          });
-        });
-      });
+      function showAllEvents() {
+        window.location.reload();
+      }
     </script>
   </body>
 </html>
