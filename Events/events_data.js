@@ -37,19 +37,19 @@ const Events = [
     }
 ];
 
-// Function to render events
+// Function to render events using map()
 function renderEvents(events) {
     const eventListContainer = document.getElementById('event-list');
     eventListContainer.innerHTML = ''; // Clear the existing list before rendering new events
 
-    events.forEach(event => {
+    // Use map() to generate event cards HTML
+    const eventCards = events.map(event => {
         const eventDate = new Date(event.date); // Convert string to Date object
         const day = eventDate.getDate(); // Get day
         const year = eventDate.getFullYear();
         const month = eventDate.toLocaleString('default', { month: 'short' }); // Get month in short form
 
-        // Create event card structure
-        const eventCard = `
+        return `
             <div class="col-md-4 mb-3">
                 <div class="card event-card position-relative">
                     <div class="position-absolute top-0 start-0 bg-primary text-white rounded-circle d-flex justify-content-center align-items-center"
@@ -70,10 +70,10 @@ function renderEvents(events) {
                 </div>
             </div>
         `;
-
-        // Append the event card to the container
-        eventListContainer.innerHTML += eventCard;
     });
+
+    // Join the event cards array and set it as innerHTML
+    eventListContainer.innerHTML = eventCards.join('');
 }
 
 // Event listener for filter button
